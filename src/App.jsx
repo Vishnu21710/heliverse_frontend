@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   fetchUsers,
-  setFilteredUsers,
   addToTeam,
   removeFromTeam,
 } from "./features/users/usersSlice";

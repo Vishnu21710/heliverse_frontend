@@ -14,7 +14,7 @@ export const fetchUsers = createAsyncThunk(
         if (selectedGenders?.length > 0) params.append('gender', selectedGenders.join(','));
         if (selectedAvailability !== null) params.append('available', selectedAvailability);
   
-        const response = await axios.get(`http://localhost:8080/api/users?${params.toString()}`);
+        const response = await axios.get(`https://heliverse-backend-zo6o.onrender.com/api/users?${params.toString()}`);
         return response.data;
       } catch (error) {
         console.log(error);
