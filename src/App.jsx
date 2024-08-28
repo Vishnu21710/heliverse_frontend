@@ -5,7 +5,7 @@ import {
   addToTeam,
   removeFromTeam,
 } from "./features/users/usersSlice";
-import { Search, ChevronLeft, ChevronRight } from "lucide-react";
+import { Search, ChevronLeft, ChevronRight, Loader } from "lucide-react";
 import "./App.css";
 
 export default function Component() {
@@ -54,9 +54,7 @@ export default function Component() {
     dispatch(removeFromTeam(userId));
   };
 
-  if (status === "loading") {
-    return "...Loading";
-  }
+  
 
   if (status === "failed") {
     return <p>Error: {error}</p>;
@@ -120,11 +118,11 @@ export default function Component() {
       </div>
 
       {/* User Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-4 w-full">
         {filteredUsers.length === 0 ? (
           <p>No users found</p>
         ) : (
-          filteredUsers.map((user) => (
+          status === "loading" ? <Loader className="animate-spin h-20 w-20 mx-auto" /> : filteredUsers.map((user) => (
             <div
               key={user.id}
               className="bg-white shadow-md rounded-lg overflow-hidden"
